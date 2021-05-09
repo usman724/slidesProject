@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+
+</head>
+
+<body>
+
+  <div id="btndiv">
+
+
+
+    <table  style="    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    height: 100vh;">
+      <% for(var i=0; i < myVar.length; i++) { %>
+        <tr >
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-lg "
+            style="width: 200px;"
+            onclick="vote('<%= myVar[i].option %>')">
+              <%= myVar[i].optionname %>
+            </button>
+
+        </tr>
+        <% } %>
+    </table>
+  </div>
+
+</body>
+<script>
+  var socket = io();
+  console.log("--------------------------------------------");
+ // console.log(this.href.substring(this.href.lastIndexOf('/') + 1));
+
+  var parts = location.href.split('/');
+  var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
+
+  console.log(lastSegment);
+  
+  
+  
+  function vote(i) {
+    alert(i);
+    localStorage.setItem(lastSegment, 'ture');
+    let datavote = {
+      lastSegment,
+      i
+    }
+    socket.emit('vote', datavote);
+
+    var x = localStorage.getItem(lastSegment);
+    alert(x);
+    if (x) {
+
+      document.getElementById("btndiv").innerHTML = `<h1>Voted :)</h1>`;
+    }
+  }
+
+  function myfun() {
+    var x = localStorage.getItem(lastSegment);
+
+    if (x) {
+
+      document.getElementById("btndiv").innerHTML =`<div style="    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+      <img  style="width:100px;" src="https://cdn.shopify.com/s/files/1/1061/1924/files/Hugging_Face_Emoji_2028ce8b-c213-4d45-94aa-21e1a0842b4d_large.png?15202324258887420558"/>
+      Already Done!
+      </div>`
+    } else {
+
+    }
+  }
+
+  myfun();
+ //  socket.emit('newload','new user connected with this tan');;
+</script>
+
+
+
+
+</html>

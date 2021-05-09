@@ -1,5 +1,5 @@
 
-const { validationResult,body, check } = require('express-validator');
+const { validationResult, body, check } = require('express-validator');
 
 // const resultsValidator = (req) => {
 //     const messages = []
@@ -21,62 +21,104 @@ const { validationResult,body, check } = require('express-validator');
 //     })
 //   }
 
-  
+
 //  `email`, `address`, `phone`, `type`
 
 exports.CreateAccountValidation = () => {
     return [
-    check('username')
-        .notEmpty()
-        .withMessage('username not define')
+        // check('username')
+        //     .notEmpty()
+        //     .withMessage('username not define')
+        //     ,
+        check('email')
+            .isEmail()
+            .withMessage('Email  is required')
         ,
-    check('email')
-        .isEmail()
-        .withMessage('Email  is required')
-        ,    
-    check('address')
-        .notEmpty()
-        .withMessage('address is required')
-    ,    
-    check('type')
-        .notEmpty()
-        .withMessage('Mention Account Type Business/Personal ')
-        ,
-    check('phone')
-        .notEmpty()
-        .withMessage('phone is required')
-      ] 
+        check('password')
+            .notEmpty()
+            .withMessage('password is required')
+        // ,    
+        // check('type')
+        //     .notEmpty()
+        //     .withMessage('Mention Account Type ')
+        //     ,
+        // check('phone')
+        //     .notEmpty()
+        //     .withMessage('phone is required')
+    ]
 }
+
+
+
+exports.loginAccountValidation = () => {
+    return [
+        check('email')
+            .isEmail()
+            .withMessage('Email  is required')
+        ,
+        check('password')
+            .notEmpty()
+            .withMessage('address is required')
+
+    ]
+}
+
+exports.completeProfileAccountValidation = () => {
+    return [
+  
+        check('username')
+            .notEmpty()
+            .withMessage('username is required')
+        ,
+        check('bio')
+            .notEmpty()
+            .withMessage('bio is required')
+
+        ,
+        check('community')
+            .notEmpty()
+            .withMessage('Select community ')
+
+        ,
+        check('country')
+            .notEmpty()
+            .withMessage('Select country ')
+    ]
+}
+
+
+
+
 exports.BusinessAccountValidation = () => {
     return [
-    check('businessType')
-        .notEmpty()
-        .withMessage('businessType not define (Public / Private )')
+        check('businessType')
+            .notEmpty()
+            .withMessage('businessType not define (Public / Private )')
     ]
-  
+
 }
 
 exports.PersonalAccountValidation = () => {
     return [
-    check('categories')
-        .notEmpty()
-        .withMessage('categories not define (Intrested)')
+        check('categories')
+            .notEmpty()
+            .withMessage('categories not define (Intrested)')
     ]
-  
+
 }
 exports.categoriesValidation = () => {
     return [
-    check('categories')
-        .notEmpty()
-        .withMessage('categories not define (Intrested)')
+        check('categories')
+            .notEmpty()
+            .withMessage('categories not define (Intrested)')
     ]
-  
+
 }
 exports.userdatavalidation = () => {
     return [
-    check('id')
-        .notEmpty()
-        .withMessage('ID not define ')
+        check('id')
+            .notEmpty()
+            .withMessage('ID not define ')
     ]
-  
+
 }

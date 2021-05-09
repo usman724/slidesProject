@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style-3.css">
+    <title>My Profile</title>
+</head>
+
+<body>
+    <header class="sgt-inner-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 d-flex align-items-center">
+                    <h5 class="inner-logo">Logo</h5>
+                </div>
+                <div class="col-md-10 d-flex align-items-center justify-content-end">
+                    <div class="col-md-3 d-flex align-items-center justify-content-between">
+                        <button type="button" class="btn btn-success">
+                                <span class="">
+                                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg">
+                                        <g color="currentColor">
+                                            <g fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span font-family="body" font-size="2" class="">Upgrade</span>
+                                </span>
+                            </button>
+                        <div id="help-icon">
+                            <button id="help-thumbnail" class="btn btn-link d-flex">
+                                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="24px" width="24px" class="r-svg">
+                                        <g color="rgba(16, 24, 52, 0.75)">
+                                            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                                <line x1="12" y1="17" x2="12" y2="17"></line>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                        </div>
+                        <nav class="navbar-expand-sm">
+                            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button> -->
+                            <div class="collapse navbar-collapse" id="navbar-list-4">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link profile-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            SGT
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <!-- <a class="dropdown-item" href="#">Dashboard</a>
+                                        <a class="dropdown-item" href="#">Edit Profile</a> -->
+                                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="my-profile-section">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-2 p-0 border-right mp-sidebar-menu">
+                    <nav class="navbar-expand h-100 pt-4">
+                        <div class="collapse navbar-collapse h-100 flex-column" id="navbarSupportedContent">
+                            <div class="w-100">
+                                <h3 class="sgt-st-title pl-3">Workspace</h3>
+                                <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3 pb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="my-presentation.html"><i class="fas fa-home"></i> My Presentations</a>
+                                    </li>
+                                    <!-- <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-globe"></i> Community</a>
+                                    </li> -->
+                                </ul>
+                            </div>
+                            <div class="border-top pt-3 w-100">
+                                <h3 class="sgt-st-title pl-3">Account</h3>
+                                <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="my-profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="my-plan.html"><i class="fas fa-file-invoice-dollar"></i> My Plan</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="payment.html"><i class="fas fa-wallet"></i> Payment</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-10">
+                    <!-- <div class="container">
+                            <nav aria-label="breadcrumb" class="py-3">
+                                <ol class="breadcrumb bg-white mb-0">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div> -->
+                    <div class="container pt-3">
+                        <h3 class="sgt-page-title pt-4 pb-4 mb-5 border-bottom">My Profile</h3>
+
+                        <div class="col-10 m-auto">
+                            <div class="sgt-mp-mid-sec">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                            <a class="nav-link active show mt-0" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile</a>
+                                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Change password</a>
+                                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Notification</a>
+                                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Account deletion</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                <div class="sgt-mp-content">
+                                                    <h5 class="sgt-st-title">Profile</h5>
+                                                    <div class="sgt-mp-details">
+                                                        <form action="#" class="profile-form">
+                                                            <div class="row mb-4">
+                                                                <div class="col">
+                                                                    <div class="form-outline">
+                                                                        <input type="text" id="form3Example1" class="form-control" />
+                                                                        <label class="form-label" for="form3Example1">First name</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-outline">
+                                                                        <input type="text" id="form3Example2" class="form-control" />
+                                                                        <label class="form-label" for="form3Example2">Last name</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-outline">
+                                                                <textarea class="form-control sgt-inpt-counter" id="billingAddress" rows="4" maxlength="250" hint-class="show-sgt-counter"></textarea>
+                                                                <label class="form-label" for="billingAddress">Billing address:</label>
+                                                                <span class="remaining sgt-st-input-counter show-sgt-counter">250</span>
+                                                            </div>
+                                                            <!-- <div class="form-outline">
+                                                            <input type="text" id="form2" class="form-control" required/>
+                                                            <label class="form-label" for="form2">Email address</label>
+                                                        </div> -->
+                                                            <button class="btn btn-primary mt-3">Update Profile</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                                <div class="sgt-mp-content">
+                                                    <h5 class="sgt-st-title">Change email</h5>
+                                                    <div class="sgt-mp-details">
+                                                        <div class="container p-0">
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                    <b>Email address :</b>
+                                                                </div>
+                                                                <div class="col-9 d-flex align-items-center justify-content-between">
+                                                                    <p>
+                                                                        <span>username@domain.com</span>
+                                                                    </p>
+                                                                    <span class="sgt-ce-edit-itext text-primary"><i class="fas fa-pencil-alt"></i> Edit</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="sgt-ce-edit w-100 mb-3" style="display: none;">
+                                                                <p class="sgt-ce-edit-info"><i class="fa fa-info-circle"></i> In order to log in using the new email, you need to create a new password.</p>
+                                                                <form action="#" class="profile-form">
+                                                                    <div class="form-outline mb-4">
+                                                                        <input type="text" id="form2" class="form-control" required/>
+                                                                        <label class="form-label" for="form2">Email address</label>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="form-outline sgt-ce-pass">
+                                                                                <input type="password" id="changeEm-password" class="form-control pass-inpt" placeholder="Password" data-toggle="password" />
+                                                                                <!-- <label class="form-label" for="changeEm-password">Password</label> -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="form-outline sgt-ce-pass">
+                                                                                <input type="password" id="changeEm-cpassword" class="form-control pass-inpt" placeholder="Confirm Password" data-toggle="password" />
+                                                                                <!-- <label class="form-label" for="changeEm-cpassword">Confirm Password</label> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button class="btn btn-primary mt-3">Update email</button>
+                                                                </form>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                    <b>Linked account:</b>
+                                                                </div>
+                                                                <div class="col-9">
+                                                                    <img src="images/google.svg">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                                <div class="sgt-mp-content">
+                                                    <h5 class="sgt-st-title">Create Password</h5>
+                                                    <div class="sgt-mp-details">
+                                                        <form action="#" class="profile-form">
+                                                            <div class="form-outline mb-3 sgt-ce-pass">
+                                                                <input type="password" id="create-password" class="form-control pass-inpt" placeholder="Password" data-toggle="password" required/>
+                                                                <!-- <label class="form-label" for="create-password">Password</label> -->
+                                                            </div>
+                                                            <div class="form-outline mb-3 sgt-ce-pass">
+                                                                <input type="password" id="create-password" class="form-control pass-inpt" placeholder="Confirm Password" data-toggle="password" required/>
+                                                                <!-- <label class="form-label" for="create-cpassword">Confirm Password</label> -->
+                                                            </div>
+                                                            <button class="btn btn-primary mt-3">Update Profile</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                                <div class="sgt-mp-content">
+                                                    <h5 class="sgt-st-title">Email preferences</h5>
+                                                    <div class="sgt-mp-details">
+                                                        <p>Once in a while, email me about…</p>
+                                                        <form class="w-100">
+                                                            <div class="form-check mb-3">
+                                                                <input class="form-check-input" type="checkbox" value="" id="featureUpdates" />
+                                                                <label class="form-check-label" for="featureUpdates">Feature updates and protips</label>
+                                                            </div>
+
+                                                            <div class="form-check mb-3">
+                                                                <input class="form-check-input" type="checkbox" value="" id="generalContent" checked />
+                                                                <label class="form-check-label" for="generalContent">General useful content (on new quiz ideas, team building, public speaking, inspiration, and more)</label>
+                                                            </div>
+
+                                                            <div class="form-check mb-3">
+                                                                <input class="form-check-input" type="checkbox" value="" id="dealsPromo" checked />
+                                                                <label class="form-check-label" for="dealsPromo">Special deals and promotions</label>
+                                                            </div>
+                                                            <button class="btn btn-primary mt-2">Update</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                                <div class="sgt-mp-content">
+                                                    <h5 class="sgt-st-title">Account deletion</h5>
+                                                    <div class="sgt-mp-details">
+                                                        <p>This will permanently delete your account and all presentation data.</p>
+                                                        <button class="btn btn-danger">Delete account</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
