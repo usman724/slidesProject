@@ -477,7 +477,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                <div class="tab-pane fade MultipleChociceContent" id="ex2-tabs-2"  role="tabpanel" aria-labelledby="ex2-tab-2">
                     <div class="sgt-add-desc">
                         <a href="">Add meta description</a>
                     </div>
@@ -694,6 +694,226 @@
                             </select>
                     </div>
                 </div>
+
+                <div class="tab-pane fade openEndedContent" id="ex2-tabs-2"   role="tabpanel" aria-labelledby="ex2-tab-2">
+                    <div class="sgt-add-desc">
+                        <a href="">Add meta description</a>
+                    </div>
+                    <div class="sgt-st-row mt-3">
+                        <h5 class="sgt-st-title">Your question</h5>
+                        <div class="sgt-input-limit mt-3">
+                            <div class="form-outline mb-1">
+                                <input type="text" id="form5" class="form-control sgt-inpt-counter" maxlength="150" hint-class="show-sgt-counter" />
+                                <label class="form-label" for="form5">Multiple Choice</label>
+                                <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
+                            </div>
+
+                            
+                            <div class="sgt-add-desc mb-2">
+                                <a id="add-lg-desc">Add longer description</a>
+                            </div>
+                            <input type="text"  id="selectedIdSlide"  style="display: none;"/>
+                            <div class="add-long-des form-outline" style="display: none;">
+                                <textarea class="form-control sgt-inpt-counter" id="textAreaExample" rows="4" maxlength="250" hint-class="show-sgt-counter"></textarea>
+                                <label class="form-label" for="textAreaExample">Your description</label>
+                                <span class="remaining sgt-st-input-counter show-sgt-counter">250</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sgt-st-row mt-3">
+                        <h5 class="sgt-st-title">Options</h5>
+                        <div id="sgtOptionBody" class="sgtOptionContainer">
+                            <div class="drag-handler mb-3">
+                                <div class="sgt-input-limit row">
+                                    <div class="col-10">
+                                        <div class="form-group sgt-option-cell mb-0">
+                                            <input type="text" id="form-option-1" class="form-control" 
+
+                                            maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                            <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="upload-btn-wrapper">
+                                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="28px" width="28px"><g color="#196CFF"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></g></g></svg>
+                                            <input type="file" name="myfile" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="sgt-option-cell sgt-option_del-row-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="drag-handler mb-3">
+                                <div class="sgt-input-limit row">
+                                    <div class="col-10">
+                                        <div class="form-group sgt-option-cell mb-0">
+                                            <input type="text" id="form-option-2" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="upload-btn-wrapper">
+                                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="28px" width="28px"><g color="#196CFF"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></g></g></svg>
+                                            <input type="file" name="myfile" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="sgt-option-cell sgt-option_del-row-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="drag-handler mb-3">
+                                <div class="sgt-input-limit row">
+                                    <div class="col-10">
+                                        <div class="form-group sgt-option-cell mb-0">
+                                            <input type="text" id="form-option-3" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="upload-btn-wrapper">
+                                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="28px" width="28px"><g color="#196CFF"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></g></g></svg>
+                                            <input type="file" name="myfile" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="sgt-option-cell sgt-option_del-row-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sgt-option_add-row mt-3">
+                            <button class="btn btn-block btn-dark sgt-option_add-row-btn justify-content-center">+ Add another option</button>
+                        </div>
+                        <script id="rowTemplate" type="text/template">
+                            <div class="drag-handler mb-3">
+                                <div class="sgt-input-limit row">
+                                    <div class="col-10">
+                                        <div class="form-group sgt-option-cell mb-0">
+                                            <input type="text" id="form-option" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="upload-btn-wrapper">
+                                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="28px" width="28px"><g color="#196CFF"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></g></g></svg>
+                                            <input type="file" name="myfile" />
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <div class="sgt-option-cell sgt-option_del-row-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </script>
+                    </div>
+
+                    <div class="sgt-st-row mt-3">
+                        <h5 class="sgt-st-title">Image</h5>
+                        <button type="button" class="btn btn-block sgt-st-upload" onclick="document.getElementById('inputFile').click()">
+                                <div class="container p-0">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <svg width="50" height="50" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"
+                                            aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <title>Upload</title>
+                                            <path d="M31 48V3M16 20L31 3l15 16" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke="#909090"
+                                            fill="none" data-name="layer2" stroke-linejoin="round"></path>
+                                            <path d="M8 46v16h46V46" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke="#909090" fill="none" data-name="layer1"
+                                            stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="col-9 d-flex flex-column align-items-start justify-content-center p-0 position-relative">
+                                            <p class="sgt-upl-text">Drag and drop or click to select an image</p>
+                                            <p class="sgt-upl-sup-text">Supported file types are <span>.jpg, .png, .svg</span></p>
+                                            <div class="form-group inputDnD">
+                                                <label class="sr-only" for="inputFile">File Upload</label>
+                                                <input type="file" class="form-control-file font-weight-bold" id="inputFile" accept="image/*" onchange="readUrl(this)" data-title="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                    </div>
+
+                    <div class="sgt-st-row">
+                        <div class="container-fluid p-0">
+                            <h5 class="sgt-st-title">Advanced questions</h5>
+                            <div class="row">
+                                <div class="col-4" >
+                                    <div class="sgt-st-list" onclick="changemodel(this.id)" id="bars">
+                                        <svg viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="32px" width="32px" class="r-svg"><title>Bar Chart Icon</title><rect x="32.73" y="17.04" width="11.4" height="25.25" fill="rgb(231, 232, 235)"></rect><rect x="3.87" y="26.22" width="11.4" height="16.06" fill="rgb(64, 70, 93)"></rect><rect x="18.3" y="4.31" width="11.4" height="37.97" fill="rgb(183, 186, 194)"></rect><rect y="42.28" width="48" height=".99" fill="#000000"></rect></svg>                                                    Bars
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="sgt-st-list" onclick="changemodel2(this.id)" id="donut">
+                                        <svg viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="32px" width="32px" class="r-svg"><title>Donut Chart Icon</title><path d="M23.5 0v10.009C16 10.272 10 16.435 10 24c0 4.477 2.101 8.463 5.371 11.026l-5.857 8.062C-.872 35.23-3.107 20.477 4.56 9.883A23.24 23.24 0 0123.129.004L23.5 0z" fill="rgb(183, 186, 194)"></path><path d="M24 38c2.789 0 5.387-.815 7.57-2.22l5.831 8.027a23.58 23.58 0 01-27.079-.13l5.858-8.063A13.935 13.935 0 0024 38z" fill="rgb(231, 232, 235)"></path><path d="M37.125 28.881l9.436 3.067a22.94 22.94 0 01-8.337 11.288l-5.834-8.028a14.037 14.037 0 004.735-6.327z" fill="rgb(183, 186, 194)"></path><path d="M46.75 16.55a22.91 22.91 0 01.12 14.447l-9.43-3.066c.365-1.247.56-2.566.56-3.931a14 14 0 00-.591-4.039l9.452-3.071-.111-.34z" fill="rgb(231, 232, 235)"></path><path d="M24.5.001A23.57 23.57 0 0146.55 15.94l-9.464 3.074c-1.953-5.123-6.827-8.803-12.587-9.005V0z" fill="rgb(64, 70, 93)"></path></svg>                                                    Donut
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="sgt-st-list" onclick="changemodel3(this.id)" id="pie" >
+                                        <svg viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="32px" width="32px" class="r-svg"><title>Pie Chart Icon</title><path d="M23.5.001v23.704L2.624 35.276A24.482 24.482 0 01.932 17.555C2.689 11.372 6.805 6.148 12.374 3.033A22.807 22.807 0 0123.5 0z" fill="rgb(183, 186, 194)"></path><path d="M24 47.997a23.33 23.33 0 01-20.755-11.92L24.128 24.5h23.867C47.729 37.521 37.088 47.996 24 47.996z" fill="rgb(231, 232, 235)"></path><path d="M47.995 23.5H24.5V.005C37.358.268 47.732 10.642 47.995 23.5z" fill="rgb(64, 70, 93)"></path></svg>                                                    Pie
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="sgt-st-list"  onclick="changemodel4(this.id)" id="dots">
+                                        <svg viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="32px" width="32px" class="r-svg"><title>Dots Chart Icon</title><circle cx="8.28" cy="36.41" r="8.28" fill="rgb(64, 70, 93)"></circle><circle cx="39.72" cy="36.41" r="8.28" fill="rgb(64, 70, 93)"></circle><circle cx="8.28" cy="11.59" r="8.28" fill="rgb(64, 70, 93)"></circle><circle cx="39.72" cy="11.59" r="8.28" fill="rgb(64, 70, 93)"></circle></svg>                                                    Dots
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sgt-st-row mt-3">
+                        <h5 class="sgt-st-title">Extras</h5>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="sgtShowAnswer" />
+                            <label class="form-check-label" for="sgtShowAnswer">Show correct answer(s)</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="sgtShowPercentage" />
+                            <label class="form-check-label" for="sgtShowPercentage">Show results in percentage</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox"   onchange="checkOperation()" id="sgtChooseParticipants" />
+                            <label class="form-check-label" for="sgtChooseParticipants">Let participants choose multiple options</label>
+                        </div>
+                        <div class="form-check form-switch" style="
+                        width: 10rem;
+                    ">
+                            <input type="range" min="1" max="3" 
+                            onchange="checkOperationForRange();"
+                            id="rangeselection"
+                            autocompleted="" class="" style="
+                            display: none;
+                            width: 300px;
+                            margin-top: 13px;
+                        ">
+                        <span id="selectionrangevalue"></span>
+                            
+                        </div>
+                    </div>
+                   
+
+                    <div class="sgt-st-row mt-3">
+                        <h5 class="sgt-st-title">Segmentation</h5>
+                        <p>Present the results according to what the audience answered on another question.</p>
+                        <select class="browser-default custom-select">
+                                <option value="">No question selected</option>
+                                <option value="" disabled="">===========</option>
+                                <option value="1">1 n/a This is the Current Question</option>
+                            </select>
+                    </div>
+                </div>
+
+
 
                 <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
                     <div class="sgt-st-row mt-3">

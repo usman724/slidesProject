@@ -13,16 +13,27 @@ var allowopenEndedQuestionCheck = false;
 
 
 function allowOpenEndedQuestion() {
+    
     allowopenEndedQuestionCheck = true;
     alert(allowopenEndedQuestionCheck);
+    $('.MultipleChociceContent').css('display','none');
+    $('.openEndedContent').css('display','block');
+   
+
 }
 
 function allowMultipelChoiceQuestion() {
 
     allowopenEndedQuestionCheck = false;
-    alert(allowopenEndedQuestionCheck);
+    
+    $('.MultipleChociceContent').css('display','block');
+    $('.openEndedContent').css('display','none');
+
+alert(allowopenEndedQuestionCheck);
 
 }
+
+allowMultipelChoiceQuestion();
 
 
 
