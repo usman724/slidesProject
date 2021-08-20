@@ -10,7 +10,6 @@ const url = require('url');
 function sendVarificationEmail(too, pass) {
 
 
-
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         //   ADD EMAIL AND PASSWORD (GOOGLE ACCOUNT - > SECURITY -> APP PASSWORD - > select app + select device => generate)
@@ -34,10 +33,7 @@ function sendVarificationEmail(too, pass) {
             return res.status(200).send(
                 {
                     Result: "Email Send Successfully",
-                    // Subject : req.body.subject,
-                    // Message : req.bod.message,
-                    // From : req.body.from ,
-                    // To :  req.body.to
+               
                 }
             );;
         }
@@ -49,42 +45,22 @@ function sendVarificationEmail(too, pass) {
 exports.postUserDate = (req, res) => {
     const errors = validationResult(req);
     // const { username, email, password, phone, type } = req.body;
-    const { username, email, password } = req.body;
+    let emttystring=12;
+    const { username,email, password } = req.body;
 
     console.log(`user :  ${username}  email:   ${email} pass:  ${password}`);
 
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    connection.query('INSERT INTO `user`(  `username` ,`email` , `password` , `new` ,`varify`) VALUES (?,?,?,"true",0)',
-        [username, email, password]
-        , (error, results, fields) => {
+    connection.query(`INSERT INTO user(username, name, email,password, bio, photo, phone, community, country, type, new, varify, whereuse, maingoal) VALUES ( '${username}','${emttystring}','${email}','${password}','${emttystring}','${emttystring}','${emttystring}','${emttystring}','${emttystring}','${emttystring}',"true",1,'${emttystring}','${emttystring}')`, (error, results, fields) => {
             if (error) throw error;
 
+         sendVarificationEmail(email, `http://slidesmare.com/api/varification_Account/${results.insertId}`);
 
+               res.send(200);
 
-            sendVarificationEmail(email, `http://localhost:1900/api/varification_Account/${results.insertId}`);
-
-            res.render('log-sign-up.ejs', {
-                "email": email,
-                // "phone": phone,
-                "password": password,
-                // "type": type,
-                "id": results.insertId,
-                message: "Please Varify Account!"
-            });
-
-            // res.status(200).json({
-            //     // "username": username,
-
-            //     // request: {
-            //     //     "Type": "Post",
-            //     //     "url": (type === "seller") ? 'http://localhost:1700/api/businessAccount/' + results.insertId : 'http://localhost:1700/api/personalAccount/' + results.insertId,
-            //     //     "Payload": (type === "buyer") ? 'businessType: Public/Private' : 'categories : Intrested'
-            //     // }
-            // })
-
-
+            
 
         });
 }
@@ -98,7 +74,7 @@ exports.loginUser = (req, res) => {
     connection.query(`SELECT * FROM user WHERE email='${email}' AND password='${password}'`, (error, results, fields) => {
         if (error) throw error;
         if (results.length == 0) {
-            res.render('log-sign-up.ejs', {
+            res.render('new_login_signup.ejs', {
                 err: "User Does not exits"
             });
         }
@@ -106,20 +82,47 @@ exports.loginUser = (req, res) => {
         else if (results[0].varify == 0) {
 
             console.log(`log ${results[0].varify}`);
-            res.render('log-sign-up.ejs', {
+            res.render('new_login_signup.ejs', {
                 err: "Please Varify Account !!"
             });
-        } else {
+        } 
+         else if (results[0].whereuse.length >3) {
+
+            console.log(`log ${results[0].whereuse}`);
+
+            connection.query(`select * from user_slide  where user_id =${results[0].id} AND folder_id=0`,
+            (error, resultsfolderslide, fields) => {
+                if (error) throw error;
+            
+            
+                connection.query(`select * from user_folder  where user_id =${results[0].id}`,
+                (error, resultsfolder, fields) => {
+                    if (error) throw error;
+                
+                    let user = {
+                        email,
+                        id: results[0].id
+                    }
+
+                res.render('my-presentation.ejs', {
+                    totalslide: resultsfolderslide,
+                    folder:resultsfolder ,
+                    "user": user
+                });
+            
+                })    
+            
+            });
+          
+        } 
+
+        else {
             let user = {
                 email,
                 id: results[0].id
             }
 
             var token = jwt.sign({ user }, 'as23das', { expiresIn: '1hr' },);
-
-
-
-
 
             res.render('welcome.ejs', {
                 "user": user
@@ -135,7 +138,7 @@ exports.loginUser = (req, res) => {
 
 
 exports.openlogin = (req, res) => {
-    res.render('log-sign-up.ejs');
+    res.render('new_login_signup.ejs');
 }
 
 
@@ -158,7 +161,6 @@ exports.completeProfile = (req, res) => {
             })
         });
 }
-
 
 function sendMailtoiuser(too, pass) {
     console.log('send-verification-email');
@@ -184,38 +186,27 @@ function sendMailtoiuser(too, pass) {
         if (error) {
             return res.status(401).send(error);
         } else {
-            return res.status(200).send(
-                {
-                    Result: "Email Send Successfully",
-                    // Subject : req.body.subject,
-                    // Message : req.bod.message,
-                    // From : req.body.from ,
-                    // To :  req.body.to
-                }
-            );;
+            return res.status(200);
         }
     });
 }
-
-
 
 
 //Forget password 
 exports.forgetPassword = (req, res) => {
     const { email } = req.body;
     console.log(email);
-    connection.query(`SELECT password FROM user where email='${email}'`, (error, results, fields) => {
+    connection.query(`SELECT password FROM user where email='${email}'`, 
+    (error, results, fields) => {
         if (error) throw error;
-        sendMailtoiuser(email, results[0].password);
+   sendMailtoiuser(email, results[0].password);
         console.log(results);
         console.log(email, results[0].password);
-        res.render('log-sign-up.ejs');
+        res.status(200);
+   
     });
 }
-
-
 //varify User Account ..
-
 exports.varifyAccount = (req, res) => {
     const { id } = req.params;
     connection.query(`SELECT * FROM user where id='${id}'`, (error, results, fields) => {
@@ -227,7 +218,7 @@ exports.varifyAccount = (req, res) => {
                 "Message": "No User Exits",
                 request: {
                     Method: "POST",
-                    url: "http://localhost:1900/api/login",
+                    url: "https://lizamaids.com/api/login",
                     payload: {
                         "Email": "Email Address",
                         "Password": "Security Purpose"
@@ -243,7 +234,7 @@ exports.varifyAccount = (req, res) => {
                     // res.status(200).json({
                     //     message: "Successfully Varifed !"
                     // })
-                    res.render('my-profile.ejs');
+                    res.render('account_verify.ejs');
                 });
         }
     });
@@ -254,7 +245,7 @@ exports.varifyAccount = (req, res) => {
 
 exports.openpage = (req, res) => {
 
-    res.render('log-sign-up.ejs');
+    res.render('new_login_signup.ejs');
 }
 
 // updatewhereuse
@@ -263,7 +254,7 @@ exports.openpage = (req, res) => {
 
 exports.updatewhereuse = (req, res) => {
 
-    // res.render('log-sign-up.ejs');
+    // res.render('new_login_signup.ejs');
     const { Userid, whereuse, setgoal } = req.body;
     console.log(`User id  ${Userid} and where use ${whereuse}`);
 
@@ -276,7 +267,7 @@ exports.updatewhereuse = (req, res) => {
                 "Message": "No User Exits",
                 request: {
                     Method: "POST",
-                    url: "http://localhost:1900/api/login",
+                    url: "http://slidesmare.com/api/login",
                     payload: {
                         "Email": "Email Address",
                         "Password": "Security Purpose"
@@ -288,17 +279,29 @@ exports.updatewhereuse = (req, res) => {
                 (error, results, fields) => {
                     if (error) throw error;
 
-                    connection.query(`select * from user_folder  where user_id =${Userid}`,
-                        (error, resultsfolder, fields) => {
+                    connection.query(`select * from user_slide  where user_id =${Userid} AND folder_id=0`,
+                        (error, resultsfolderslide, fields) => {
                             if (error) throw error;
+                        
+                        
+                            connection.query(`select * from user_folder  where user_id =${Userid}`,
+                            (error, resultsfolder, fields) => {
+                                if (error) throw error;
+                            
+                              
                             res.render('my-presentation.ejs', {
-                                folder: resultsfolder
+                                totalslide: resultsfolderslide,
+                                folder:resultsfolder
                             });
+                        
+                            })    
+                        
                         });
+
                 });
         }
     });
-
+    
 
 }
 
@@ -310,14 +313,18 @@ exports.openpageedit = (req, res) => {
     const parsed = url.parse(req.url);
     const query  = querystring.parse(parsed.query);
 
+
     // console.log(` UserId : ${query.userid} and FolderID :${query.folder_id}`);
-    connection.query(`SELECT * FROM user_folder_slide where user_id=${query.userid} AND  folder_id =${query.folder_id}`, 
+
+    connection.query(`SELECT * FROM user_folder_slide where user_id=${query.userid}
+     AND  folder_id =${query.folder_id} AND presentation_id=${query.slide_id}`, 
     (error, results, fields) => {
         if (error) throw error; 
         res.render('edit-new-first.ejs',{
             results: results ,
-            currentFolder : query.folder_id ,
-            CurrentUserid: query.userid
+            currentFolder : query.folder_id,
+            CurrentUserid: query.userid,
+            PresentMode: query.present
         });
 
         
@@ -326,6 +333,34 @@ exports.openpageedit = (req, res) => {
    // res.render('edit-new-first.ejs');
 }
 
+
+
+exports.opendashboard = (req, res) => {
+
+
+
+    const {Userid} = req.params;
+
+    connection.query(`select * from user_slide  where user_id =${Userid} AND folder_id=0`,
+    (error, resultsfolderslide, fields) => {
+        if (error) throw error;
+    
+    
+        connection.query(`select * from user_folder  where user_id =${Userid}`,
+        (error, resultsfolder, fields) => {
+            if (error) throw error;
+        
+          
+        res.render('my-presentation.ejs', {
+            totalslide: resultsfolderslide,
+            folder:resultsfolder
+        });
+    
+        })    
+    
+    });
+
+}
 
 
 
@@ -337,21 +372,90 @@ exports.createFolder = (req, res) => {
 
     const { id, folderName } = req.body;
 
-    connection.query('INSERT INTO `user_folder`(`user_id`, `folder_name`) VALUES (?,?)',
-        [id, folderName]
+    connection.query('INSERT INTO `user_folder`(`routerFolder`,`user_id`, `folder_name`) VALUES (?,?,?)',
+        [0,id, folderName]
         , (error, results, fields) => {
             if (error) throw error;
 
-            connection.query(`select * from user_folder  where user_id =${id}`,
+            connection.query(`select * from user_slide  where user_id =${id} AND folder_id=0`,
+            (error, resultsfolderslide, fields) => {
+                if (error) throw error;
+            
+            
+                connection.query(`select * from user_folder  where user_id =${id}`,
                 (error, resultsfolder, fields) => {
                     if (error) throw error;
-                    res.render('my-presentation.ejs', {
-                        folder: resultsfolder
-                    });
+                
+                  
+                res.render('my-presentation.ejs', {
+                    totalslide: resultsfolderslide,
+                    folder:resultsfolder
                 });
+            
+                })    
+            
+            });
 
         })
 
+}
+
+
+// Create Single Presentation with the without folder
+//createPresentation
+exports.createPresentation = (req, res) => {
+
+    const { id, folder_id_for_send,presentation_name,presentation_link } = req.body;
+
+    connection.query('INSERT INTO `user_slide`(`user_id`,`folder_id`,`slide_name`,`slide_link_share`) VALUES (?,?,?,?)',
+        [id, folder_id_for_send,presentation_name,presentation_link]
+        , (error, results, fields) => {
+            if (error) throw error;
+
+                connection.query(`select * from user_slide  where user_id =${id} AND folder_id=0`,
+                (error, resultsfolderslide, fields) => {
+                    if (error) throw error;
+                
+                
+                    connection.query(`select * from user_folder  where user_id =${id}`,
+                    (error, resultsfolder, fields) => {
+                        if (error) throw error;
+                    
+                      
+                    res.render('my-presentation.ejs', {
+                        totalslide: resultsfolderslide,
+                        folder:resultsfolder
+                    });
+                
+                    })    
+                
+                });
+
+
+
+        })
+
+}
+
+
+// Open Sepecific Folder
+// Api -> openFolder
+
+
+
+exports.openFolder = (req, res) => {
+
+    const { userid,folder_id_open  } = req.body;
+console.log(`select * from user_slide  where folder_id=${folder_id_open} AND user_id=${userid}`);
+    connection.query(`select * from user_slide  where folder_id=${folder_id_open} AND user_id=${userid}`,
+    (error, resultsfolder, fields) => {
+        if (error) throw error;
+        res.render('my-presentation.ejs', {
+            totalslide: resultsfolder,
+            folder:"",
+            slideinFolder:folder_id_open
+        });
+    });
 }
 
 

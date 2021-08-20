@@ -3,99 +3,356 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style-3.css">
   <script src="/socket.io/socket.io.js"></script>
-
-
+  <title>Answer</title>
 </head>
 
 <body>
 
-  <div id="btndiv">
+  <script>
+
+    var checkslideType='<%=myVar[0].allowmultipelcol%>';
+  </script>
+
+   
+
+    <%if(locals.myVar){%> 
+      
+       <%if(myVar[0].allowmultipelcol==='1'){%> 
+      
+  <!-- Here start the Multipel choice answer -->
+
+  <div class="container-fluid h-100 position-relative" id="multipeloptionslide" >
+    <div class="audience-logo">
+        <div class="logo">
+            <img src="../images/slidesmare-logo.svg">
+        </div>
+    </div>
+    <div class="sgt-audience-option">
+        <!-- <div class="sub-header">
+            Click on each image to see it in full size.
+        </div> -->
 
 
+        <div class="sub-header">
+            You may choose up to <span id="numberofoptionshowallowed"></span> options.
+        </div> 
 
-    <table  style="    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: space-between;
-    height: 100vh;">
-      <% for(var i=0; i < myVar.length; i++) { %>
-        <tr >
-          <td>
-            <button type="button" class="btn btn-outline-primary btn-lg "
-            style="width: 200px;"
-            onclick="vote('<%= myVar[i].option %>')">
-              <%= myVar[i].optionname %>
-            </button>
+        <div class="sub-header">
+          <!-- <h1><%if(locals.myVar){%> <%=myVar[0].allowmultipelcol%> <% } %> </h1> -->
+          <h4><%if(locals.question){%> <%=question%> <% } %> </h4>
+        </div>
 
-        </tr>
-        <% } %>
-    </table>
+        <%  if(locals.myVar) { if(myVar.length > 1 ) {    %>
+        
+          <input type="text" id="Option_slide_checkbox"  style="visibility: hidden;" value="<%=myVar[0].slide_id%>">
+            <input type="text" id="allowselection"  style="visibility: hidden;" value="<%=myVar[0].allowselection%>">
+            <script>
+              document.getElementById("numberofoptionshowallowed")
+              .innerText = document.getElementById('allowselection').value;
+            </script>
+          <% }} %>
+
+        <%  if(locals.myVar) {    if(myVar.length > 1 ) {    for(var i=0; i < myVar.length; i++) { %>
+        <div class="sgt-audience-input-wrapper mt-3">
+            <div class="custom-control custom-checkbox">
+                <input type="text" id="<%= myVar[i].optionname %>"
+                style="position: absolute;width: 0px;margin: 0px;border: none;height: 0px;z-index: -28;padding: 0;margin-top: -50px;"
+                value="<%= i+1 %>" >
+                <input type="checkbox" class="custom-control-input" 
+                onclick="checkallownumber()"
+                value="<%= myVar[i].optionname %>"
+                id="customCheck<%=i%>" name="checkdatapass" >
+                <label class="custom-control-label" for="customCheck<%=i%>">  <%= myVar[i].optionname %></label>
+            </div>
+        </div>
+        <% }}} %>
+        <button class="btn btn-block btn-primary btn-lg" onclick="SubmitMultipelChoice()">Submit</button>
+    </div>
+    <div class="footer d-flex flex-row align-items-center justify-content-center" style="display: none;"><a class="mr-3" href="">Powered by Slidesmare</a><a href="" target="_blank">Terms</a></div>
+</div>
+
+<!-- End Multipel choice answers -->
+        
+      <% }else {%>
+        <div class="container-fluid h-100 position-relative" id="optionslide">
+          <div class="audience-logo">
+            <div class="logo">
+              <img src="/images/slidesmare-logo.svg">
+            </div>
+          </div>
+          <div class="sgt-audience-option">
+            <div class="sub-header">
+              <!-- Click on each image to see it in full size. -->
+            </div>
+            <div class="sub-header">
+              <!-- You may choose up to 3 options. -->
+            </div>
+            <div class="sub-header">
+              <!-- <h1><%if(locals.myVar){%> <%=myVar[0].allowmultipelcol%> <% } %> </h1> -->
+              <h4><%if(locals.question){%> <%=question%> <% } %> </h4>
+            </div>
+            <%  if(locals.myVar) { if(myVar.length > 1 ) {    %>
+            <input type="text" id="selectedOption" style="visibility: hidden;">
+            <input type="text" id="selectedOptionName"style="visibility: hidden;">
+            <input type="text" id="Option_slide"  style="visibility: hidden;" value="<%=myVar[0].slide_id%>">
+      
+            <% }} %>
+      
+      
+            <%  if(locals.myVar) {    if(myVar.length > 1 ) {    for(var i=0; i < myVar.length; i++) { %>
+      
+            
+              <div class="sgt-audience-input-wrapper">
+                <div class="custom-control custom-radio">
+                  
+                  <input type="radio" onclick="checkClick('<%= i+1 %>','<%= myVar[i].optionname %>')" 
+                  class="custom-control-input" value="<%= myVar[i].optionname %>"
+                   id="customRadio<%=i%>" name="sgtCustomRadio">
+                  
+                   <label class="custom-control-label" for="customRadio<%=i%>">
+                    <%= myVar[i].optionname %>
+                  </label>
+                </div>
+              </div>
+      
+              <% }}} %>
+                <button class="btn btn-block btn-primary btn-lg" onclick="submitOption()">Submit</button>
+          </div>
+          <!-- <div class="footer d-flex flex-row align-items-center justify-content-center"><a class="mr-3" href="">Powered by Slidesmare</a><a href="" target="_blank">Terms</a></div> -->
+        </div>
+      
+        <%}}%>
+  
+
+  <div class="container-fluid h-100 position-relative" id="submitslide">
+    <div class="audience-logo">
+      <div class="logo">
+        <img src="../images/slidesmare-logo.svg">
+      </div>
+    </div>
+    <div class="sgt-audience-option">
+      <div class="animation-ctn">
+        <div class="icon icon--order-success svg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">
+            <g fill="none" stroke="#ff6363" stroke-width="2">
+              <circle cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+              <circle id="colored" fill="#fff" cx="77" cy="77" r="72"
+                style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+              <polyline class="st0" stroke="#ff6363" stroke-width="10" points="43.5,77.8 63.7,97.9 112.2,49.4 "
+                style="stroke-dasharray:100px, 100px; stroke-dashoffset: 200px;" />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="sgt-submit-text">
+        You have already answered this question. <br> Please wait for the presenter to show the next slide.
+      </div>
+    </div>
+    <div class="footer d-flex flex-row align-items-center justify-content-center" style="display: none;"><a class="mr-3" href="">Powered by
+        Slidesmare</a><a href="" target="_blank">Terms</a></div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 
+  <script>
+    var socket = io();
+    console.log("--------------------------------------------");
+    // console.log(this.href.substring(this.href.lastIndexOf('/') + 1));
+
+    var parts = location.href.split('/');
+    var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
+
+    console.log(lastSegment);
+
+
+    socket.on('voteupdate', function (data) {
+          
+        
+          location.reload();
+
+        });
+
+
+
+    function checkallownumber() {
+
+      // alert('checkallownumber');
+      var allowed =document.getElementById('allowselection').value;
+      var count=1;
+        $("input:checkbox[name=checkdatapass]:checked").each(function(){
+       
+       
+       var ds=$(this).val();
+     
+     
+       if(parseInt(count)>=parseInt(allowed)){
+       
+        // alert('limited succeed')
+
+        //
+        $("input:checkbox[name=checkdatapass]:not(:checked)").each(function(){
+          
+          $(this).attr("disabled", true);
+         
+        })
+        // 
+       }
+      
+
+       
+       count++;
+       
+      
+     });
+    }
+
+    function vote(i) {
+
+      localStorage.setItem(lastSegment, 'ture');
+      localStorage.setItem('Slide_id', document.getElementById("Option_slide").value);
+      let datavote = {
+        lastSegment,
+        i ,
+        optiondata: document.getElementById("selectedOptionName").value,
+        Slide_id: document.getElementById("Option_slide").value
+      }
+     
+
+
+      var x = localStorage.getItem(lastSegment);
+      var Slide_id_get = localStorage.getItem('Slide_id');
+      var matchslide = (Slide_id_get==document.getElementById("Option_slide").value);
+
+
+  
+
+      if (x && matchslide) {
+        document.getElementById("optionslide").style.display = "none";
+        document.getElementById("submitslide").style.display = "block";
+        socket.emit('vote', datavote);
+
+      } else {
+        document.getElementById("optionslide").style.display = "block";
+        document.getElementById("submitslide").style.display = "none";
+        socket.emit('vote', datavote);
+      
+      }
+
+    }
+
+
+
+    function SubmitMultipelChoice() {
+
+      localStorage.setItem(lastSegment, 'ture');
+      localStorage.setItem('Slide_id', document.getElementById("Option_slide_checkbox").value);
+
+      // alert('onclick :::' + document.getElementById("Option_slide_checkbox").value);
+
+
+
+      
+      var x = localStorage.getItem(lastSegment);
+      var Slide_id_get = localStorage.getItem('Slide_id');
+      var matchslide = (Slide_id_get==document.getElementById("Option_slide_checkbox").value);
+
+
+
+      $("input:checkbox[name=checkdatapass]:checked").each(function(){
+       
+       
+        var ds=$(this).val();
+    
+        let datavote = {
+            lastSegment,
+            i:parseInt(document.getElementById(ds).value)-1,
+            optiondata:ds,
+            Slide_id: document.getElementById("Option_slide_checkbox").value
+        }
+
+       
+        socket.emit('vote', datavote);
+      });
+
+
+
+      
+      if (x && matchslide) {
+        document.getElementById("multipeloptionslide").style.display = "none";
+        document.getElementById("submitslide").style.display = "block";
+        // socket.emit('vote', datavote);
+
+      } else {
+        document.getElementById("multipeloptionslide").style.display = "block";
+        document.getElementById("submitslide").style.display = "none";
+        // socket.emit('vote', datavote);
+      
+      }
+    }
+
+
+    function myfun() {
+     
+      var x = localStorage.getItem(lastSegment);
+      var Slide_id_get = localStorage.getItem('Slide_id');
+
+    // var matchslide = (Slide_id_get===document.getElementById("Option_slide").value);
+
+  //  alert(document.getElementById("Option_slide"));
+        if (document.getElementById("Option_slide")!==null) {
+         
+          var matchslide_checkbox = (Slide_id_get===document.getElementById("Option_slide").value);
+          if (x && matchslide ) {
+            document.getElementById("optionslide").style.display = "none";
+            document.getElementById("submitslide").style.display = "block";
+          } else {
+            document.getElementById("optionslide").style.display = "block";
+            document.getElementById("submitslide").style.display = "none";
+          }
+        }
+      
+
+     
+
+
+      if(x && matchslide_checkbox){
+        document.getElementById("multipeloptionslide").style.display = "none";
+        document.getElementById("submitslide").style.display = "block";
+      } else{
+        document.getElementById("multipeloptionslide").style.display = "block";
+        document.getElementById("submitslide").style.display = "none";
+      }
+    }
+
+    myfun();
+      //  socket.emit('newload','new user connected with this tan');;
+  </script>
+  <script>
+    function checkClick(e,optionname) {
+  
+      document.getElementById("selectedOption").value = e;
+      document.getElementById("selectedOption").innerText = e;
+      document.getElementById("selectedOptionName").value = optionname;
+      // alert(e);selectedOptionName
+    }
+
+    function submitOption() {
+      vote(parseInt(document.getElementById('selectedOption').value) - 1)
+    }
+  </script>
 </body>
-<script>
-  var socket = io();
-  console.log("--------------------------------------------");
- // console.log(this.href.substring(this.href.lastIndexOf('/') + 1));
-
-  var parts = location.href.split('/');
-  var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
-
-  console.log(lastSegment);
-  
-  
-  
-  function vote(i) {
-    alert(i);
-    localStorage.setItem(lastSegment, 'ture');
-    let datavote = {
-      lastSegment,
-      i
-    }
-    socket.emit('vote', datavote);
-
-    var x = localStorage.getItem(lastSegment);
-    alert(x);
-    if (x) {
-
-      document.getElementById("btndiv").innerHTML = `<h1>Voted :)</h1>`;
-    }
-  }
-
-  function myfun() {
-    var x = localStorage.getItem(lastSegment);
-
-    if (x) {
-
-      document.getElementById("btndiv").innerHTML =`<div style="    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;">
-      <img  style="width:100px;" src="https://cdn.shopify.com/s/files/1/1061/1924/files/Hugging_Face_Emoji_2028ce8b-c213-4d45-94aa-21e1a0842b4d_large.png?15202324258887420558"/>
-      Already Done!
-      </div>`
-    } else {
-
-    }
-  }
-
-  myfun();
- //  socket.emit('newload','new user connected with this tan');;
-</script>
-
-
-
 
 </html>

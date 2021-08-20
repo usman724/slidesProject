@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style-3.css">
-    <title>My Presentation</title>
+    <title>Presentation</title>
 </head>
 
 <body>
@@ -17,7 +17,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 d-flex align-items-center">
-                    <h5 class="inner-logo">Logo</h5>
+                    <h5 class="inner-logo">
+                        <img src="/images/slidesmare-logo.png" style="margin:10px;padding-right: 23px;" width="100px" alt="">
+                    </h5>
                 </div>
                 <div class="col-md-10 d-flex align-items-center justify-content-end">
                     <div class="col-md-3 d-flex align-items-center justify-content-between">
@@ -59,8 +61,10 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <!-- <a class="dropdown-item" href="#">Dashboard</a>
                                         <a class="dropdown-item" href="#">Edit Profile</a> -->
-                                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                                            <a class="dropdown-item"  onclick="revertback();"><i class="fas fa-sign-out-alt"></i> Log Out</a>
                                         </div>
+
+                                      
                                     </li>
                                 </ul>
                             </div>
@@ -81,7 +85,7 @@
                                 <h3 class="sgt-st-title pl-3">Workspace</h3>
                                 <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3 pb-4">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="my-presentation.html"><i class="fas fa-home"></i> My Presentations       </a>
+                                        <a class="nav-link active" ><i class="fas fa-home"></i> My Presentations       </a>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fas fa-globe"></i> Community</a>
@@ -92,16 +96,16 @@
                                 <h3 class="sgt-st-title pl-3">Account</h3>
                                 <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="my-profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                                        <a class="nav-link" ><i class="fas fa-user-circle"></i> My Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="my-plan.html"><i class="fas fa-file-invoice-dollar"></i> My Plan</a>
+                                        <a class="nav-link" ><i class="fas fa-file-invoice-dollar"></i> My Plan</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="payment.html"><i class="fas fa-wallet"></i> Payment</a>
+                                        <a class="nav-link" ><i class="fas fa-wallet"></i> Payment</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                                        <a class="nav-link" onclick="revertback();" ><i class="fas fa-sign-out-alt"></i> Log out</a>
                                     </li>
                                 </ul>
                             </div>
@@ -147,25 +151,37 @@
                                                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="#" class="profile-form">
-                                                    <div class="form-group mb-4">
-                                                        <label for="sgt-p-name">Presentation Name</label>
-                                                        <input type="text" class="form-control" id="sgt-p-name" placeholder="Enter Presentation Name">
-                                                    </div>
-                                                    <div class="form-group mb-4">
-                                                        <label for="sgt-p-name">Access Code</label>
-                                                        <div class="d-flex align-items-center sgt-access-code-input">
-                                                            <p class="mb-0">https://domain.com/</p><span><input type="text" class="form-control" id="sgt-p-name" placeholder="Code"></span>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                        <form action="/api/createPresentation" method="POST" class="profile-form">
+                                            <input type="text"  style="visibility: hidden;" id="id" name="id"> 
+                                           
+                                            <%  if (locals.slideinFolder) {%>
+                                                <input type="number"  style="visibility: hidden;" id="folder_id_for_send" value="<%=slideinFolder%>" name="folder_id_for_send"> 
+
+                                                <%} else {%>
+                                                    <input type="number"  style="visibility: hidden;" id="folder_id_for_send" value="0"  name="folder_id_for_send"> 
+                   
+                                                   <%}%>
+                                           
+                                           
+                                            <div class="form-group mb-4">
+                                                <label for="sgt-p-name">Presentation Name</label>
+                                                <input type="text" class="form-control" name="presentation_name" id="sgt-p-name" placeholder="Enter Presentation Name">
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="sgt-p-name">Access Code</label>
+                                                <div class="d-flex align-items-center sgt-access-code-input">
+                                                    <p class="mb-0">https://slidesmare.com/</p><span><input type="text"  name="presentation_link" class="form-control" id="sgt-p-name" placeholder="Code"></span>
+                                                </div>
+                                            </div>
+                                      
                                             </div>
                                             <div class="modal-footer border-0">
                                                 <button type="button" class="btn btn-light" data-mdb-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary">
                                                     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg"><g color="currentColor"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></g></g></svg>&nbsp; Create Presentation
                                                 </button>
                                             </div>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -174,33 +190,34 @@
                                 <!-- New Folder -->
                                 <div class="modal fade sgt-inner-popup" id="new-folder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered sgt-modal-md">
-                                        <form action="/api/createFolder" method="POST">
-                                            <input type="text"  style="visibility: hidden;" id="id" name="id"> 
-                                            <div class="modal-content pb-2">
-                                                <div class="modal-header border-0">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Create New Folder</h5>
-                                                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-group mb-0">
-                                                        <input type="text"  name="folderName" class="form-control" maxlength="150" />
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer border-0">
-                                                    <button type="button" class="btn btn-light" data-mdb-dismiss="modal">
-                                                            Cancel
-                                                        </button>
-                                                    <button type="submit" class="btn btn-primary">
-                                                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg"><g color="currentColor"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></g></g></svg>
-                                                            &nbsp; Create Folder
-                                                        </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                      
+                            <form action="/api/createFolder" method="POST">
+                                <input type="text"  style="visibility: hidden;" id="send_id" name="id"> 
+                                <div class="modal-content pb-2">
+                                    <div class="modal-header border-0">
+                                        <h5 class="modal-title" id="exampleModalLabel">Create New Folder</h5>
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group mb-0">
+                                            <input type="text"  name="folderName" class="form-control" maxlength="150" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer border-0">
+                                        <button type="button" class="btn btn-light" data-mdb-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                        <button type="submit" class="btn btn-primary">
+                                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg"><g color="currentColor"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></g></g></svg>
+                                                &nbsp; Create Folder
+                                            </button>
+                                    </div>
+                                </div>
+                            </form>
+                            
                                         <script>
                                             let userid=localStorage.getItem("loginUserID");
                                             document.getElementById("id").value=userid;
+                                            document.getElementById("send_id").value=userid;
                                         </script>
                                     </div>
                                 </div>
@@ -244,15 +261,19 @@
                             <div class="col-1"></div>
                         </div>
 
-                        <% for(var i=0; i < folder.length; i++) { %>
+                        <% if(locals.folder)  { 
+
+                            if(folder.length>=1) {
+
+                            for(var i=0; i < folder.length; i++) { %>
                          
-                            <div class="row align-items-center py-2" onclick="submitform('<%= folder[i].folder_id %>')">
+                            <div class="row align-items-center py-2" onclick="submitformforfolder('<%= folder[i].folder_id %>')">
                                 <div class="col-1">
                                     <input id="" type="checkbox" name="" value="8" />
                                     <!-- <div class="check"></div> -->
                                 </div>
-                                <div class="col-2 sgt-slide-list-image">
-                                    <img class="img-fluid" src="/images/slide-image.svg">
+                                <div class="col-2 sgt-slide-list-image" >
+                                    <img class="img-fluid" src="/images/folder-icon.svg" >
                                 </div>
                                 <div class="col-4">
                                     <p><%= folder[i].folder_name %></p>
@@ -265,6 +286,73 @@
                                     <p>24 Apr 2021</p>
                                 </div>
                                 <div class="col-1 text-right">
+                                    <nav class="navbar-expand-sm">
+                                        <div class="collapse navbar-collapse" id="navbar-list-5">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" 
+                                                        name="kebab-menu" class="path-fill-current inline-block" viewBox="0 0 14 14">
+                                                        <circle cx="6.999" cy="3.366" r="1.121" transform="rotate(90 7 3.366)" fill="#999"></circle>
+                                                        <circle cx="6.999" cy="6.999" r="1.121" transform="rotate(90 7 6.999)" fill="#999"></circle>
+                                                        <circle cx="6.999" cy="10.631" r="1.121" transform="rotate(90 7 10.63)" fill="#999"></circle></svg>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-play"></i> Present</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-download"></i> Export results</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-pen"></i> Rename</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-folder"></i> Move to folder</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-copy"></i> Duplicate</a>
+                                                        <a class="dropdown-item" href="#"><i class="fas fa-trash"></i> Delete</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                       
+                         <% }  } }%>
+
+
+                        
+                         
+                        <%  if (locals.totalslide) {
+                            
+                            if (totalslide.length >= 1) {
+                            
+
+                            for(var i=0; i < totalslide.length; i++) { %>
+                         
+                         
+
+                            <div class="row align-items-center py-2"  >
+                                <div class="col-1 d-flex justify-content-center">
+                                    <input id="" type="checkbox" name="" value="8" />
+                                    <!-- <div class="check"></div> -->
+                                </div>
+                                <div class="col-1 p-0 sgt-slide-list-image"  onclick="submitformWithPresentMode('<%= totalslide[i].slide_id %>','<%= totalslide[i].folder_id %>','<%= totalslide[i].slide_link_share %>')">
+                                    <img class="img-fluid" src="/images/slide-image.svg" style="height: 48px;">
+                                </div>
+                                <div class="col-3" onclick="submitformWithPresentMode('<%= totalslide[i].slide_id %>','<%= totalslide[i].folder_id %>','<%= totalslide[i].slide_link_share %>')">
+                                    <p  class="d-block">
+                                        <%= totalslide[i].slide_name %>
+                                    </p>
+                                    <small><i class="fas fa-layer-group"></i> 0 slide</small>
+                                </div>
+                                <div class="col-2" onclick="submitformWithPresentMode('<%= totalslide[i].slide_id %>','<%= totalslide[i].folder_id %>','<%= totalslide[i].slide_link_share %>')">
+                                    <p>a day ago</p>
+                                </div>
+                                <div class="col-2" onclick="submitformWithPresentMode('<%= totalslide[i].slide_id %>','<%= totalslide[i].folder_id %>','<%= totalslide[i].slide_link_share %>')">
+                                    <p>a day ago</p>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center">
+                                    <button class="btn btn-primary" onclick="submitform('<%= totalslide[i].slide_id %>','<%= totalslide[i].folder_id %>','<%= totalslide[i].slide_link_share %>')">
+                                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg"><g color="currentColor"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></g></g></svg>
+                                        &nbsp;Present
+                                    </button>
+                                </div>
+                                <div class="col-1 d-flex justify-content-center">
                                     <nav class="navbar-expand-sm">
                                         <div class="collapse navbar-collapse" id="navbar-list-5">
                                             <ul class="navbar-nav">
@@ -286,30 +374,89 @@
                                     </nav>
                                 </div>
                             </div>
+
                        
-                         <% } %>
+                         <% }}} %>
+
 
 
                          <form action="/api/slide"  id="slideform" method="GET"> 
                              <input type="text"  style="visibility: hidden;" id="userid" name="userid">
-                             <input type="text" style="visibility: hidden;"  id="folder_id" name="folder_id">
-                            
+                             
+                             <%  if (locals.slideinFolder) {%>
+                             <input type="text" style="visibility: hidden;"  id="folder_id" value="<%=slideinFolder%>" name="folder_id">
+                             <%} else {%>
+                                <input type="text" style="visibility: hidden;"  id="folder_id" value="0" name="folder_id">
+                                <%}%>                                
+                                <input type="text" style="visibility: hidden;"  id="slide_id" name="slide_id">
+                                <input type="text" style="visibility: hidden;"  id="li" name="li">
+                                <input type="text" style="visibility: hidden;"  value="false" id="present" name="present">
                          </form>
    
+
+
+                        
+
+
+
+                         <form action="/api/openfolder"  id="openFolder" method="POST"> 
+                            <input type="text"  style="visibility: hidden;" id="useridforfolder" name="userid">
+                            <input type="text" style="visibility: hidden;"  id="folder_id_open" name="folder_id_open">
+                           
+                        </form>
+  
+                    <%if(locals.user){%>
+
+                        <script>var name = "<%= user.id %>";
+                            console.log('name  : '+ name);
+                            localStorage.setItem("loginUserID","<%=user.id%>")
+                            </script>
+                           
+                           
+                           <%}%>
+
                          <script>
-                             function submitform(id) {
-                              //   alert(id);
-                                 document.getElementById("folder_id").value=id;
+                             function submitform(id,fid,slide_link_share) {
+                                 
+                                 document.getElementById("slide_id").value=id;
+                                 document.getElementById("li").value=slide_link_share;
                                  var userid =  localStorage.getItem("loginUserID");
                                  document.getElementById("userid").value=userid;
-
+                                 document.getElementById('present').value="True";
                                  document.getElementById("slideform").submit();
-
-                               // document.getElementById("myForm").submit();
+                               
                              }
+
+                             function submitformWithPresentMode(id,fid,slide_link_share) {
+                                 
+                                 document.getElementById("slide_id").value=id;
+                                 document.getElementById("li").value=slide_link_share;
+                                 var userid =  localStorage.getItem("loginUserID");
+                                 document.getElementById("userid").value=userid;
+                                 document.getElementById('present').value="False";
+                                 document.getElementById("slideform").submit();
+                               
+                             }
+
+                             function submitformforfolder(id) {
+                                 var userid =  localStorage.getItem("loginUserID");
+                                 document.getElementById("useridforfolder").value=userid;
+                                 document.getElementById("folder_id_open").value=id;
+                                 document.getElementById("openFolder").submit();
+                             }
+
+                        
                          </script>
                   
-
+                                <script>
+                                    function revertback() {
+                                        window.location.href = 'http://localhost:1900/api/login';
+                                        window.history.pushState(null, null, window.location.href);
+                                        window.onpopstate = function () {
+                                            window.history.go(1);
+                                        };
+                                    }
+                                </script>
                     </div>
                 </div>
             </div>

@@ -28,41 +28,31 @@ var upload = multer({
 }).single('ProfileImage');
 
 
-
-
-
 // Add User Route For Seller
 
 routes.post('/SignUp', AccountValidation.CreateAccountValidation(), UserController.postUserDate);
 routes.post('/login', AccountValidation.loginAccountValidation(), UserController.loginUser);
 routes.get('/login', UserController.openlogin);
 
-
-
-
-
-
 routes.post('/completeProfile/:userid',upload,AccountValidation.completeProfileAccountValidation(),UserController.completeProfile);
-
 
 routes.post('/forget_password', UserController.forgetPassword);
 
-
 routes.get('/varification_Account/:id', UserController.varifyAccount);
-
 
 routes.post('/dashboard', UserController.updatewhereuse);
 
 // createFolder
-
-
-
-
 routes.post('/createFolder', UserController.createFolder);
+
+routes.post('/createPresentation', UserController.createPresentation);
 
 routes.get('/open', UserController.openpage);
 
 routes.get('/slide', UserController.openpageedit);
 
+routes.post('/api/dashboard', UserController.opendashboard);
+
+routes.post('/openfolder', UserController.openFolder);
 
 module.exports = routes
