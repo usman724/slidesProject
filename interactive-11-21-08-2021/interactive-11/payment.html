@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style-3.css">
+    <title>Payment</title>
+</head>
+
+<body>
+    <header class="sgt-inner-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 d-flex align-items-center">
+                    <h5 class="inner-logo">Slidemare</h5>
+                </div>
+                <div class="col-md-10 d-flex align-items-center justify-content-end">
+                    <div class="col-md-3 d-flex align-items-center justify-content-between">
+                        <button type="button" class="btn btn-success">
+                                <span class="">
+                                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="16px" width="16px" class="r-svg">
+                                        <g color="currentColor">
+                                            <g fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span font-family="body" font-size="2" class="">Upgrade</span>
+                                </span>
+                            </button>
+                        <div id="help-icon">
+                            <button id="help-thumbnail" class="btn btn-link d-flex">
+                                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" height="24px" width="24px" class="r-svg">
+                                        <g color="rgba(16, 24, 52, 0.75)">
+                                            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                                <line x1="12" y1="17" x2="12" y2="17"></line>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                        </div>
+                        <nav class="navbar-expand-sm">
+                            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button> -->
+                            <div class="collapse navbar-collapse" id="navbar-list-4">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link profile-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            SGT
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <!-- <a class="dropdown-item" href="#">Dashboard</a>
+                                        <a class="dropdown-item" href="#">Edit Profile</a> -->
+                                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="my-profile-section">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-2 p-0 border-right mp-sidebar-menu">
+                    <nav class="navbar-expand h-100 pt-4">
+                        <div class="collapse navbar-collapse h-100 flex-column" id="navbarSupportedContent">
+                            <div class="w-100">
+                                <h3 class="sgt-st-title pl-3">Workspace</h3>
+                                <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3 pb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="my-presentation.html"><i class="fas fa-home"></i> My Presentations</a>
+                                    </li>
+                                    <!-- <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-globe"></i> Community</a>
+                                    </li> -->
+                                </ul>
+                            </div>
+                            <div class="border-top pt-3 w-100">
+                                <h3 class="sgt-st-title pl-3">Account</h3>
+                                <ul class="navbar-nav mr-auto flex-column vertical-nav pl-3 pr-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="my-profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="my-plan.html"><i class="fas fa-file-invoice-dollar"></i> My Plan</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="payment.html"><i class="fas fa-wallet"></i> Payment</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-10">
+                    <!-- <div class="container">
+                            <nav aria-label="breadcrumb" class="py-3">
+                                <ol class="breadcrumb bg-white mb-0">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div> -->
+                    <div class="container pt-3">
+                        <h3 class="sgt-page-title pt-4 pb-4 mb-5 border-bottom">Payment</h3>
+
+                        <div class="col-10 m-auto sgt-mp-mid-sec">
+                            <div class="sgt-mp-content">
+                                <h5 class="sgt-st-title">Billing information</h5>
+                                <div class="sgt-mp-details">
+                                    <div class="container p-0">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <b><i class="fas fa-user"></i> Name :</b>
+                                            </div>
+                                            <div class="col-9">
+                                                <p>Andrei Curran</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <b><i class="fas fa-address-card"></i> Billing Address:</b>
+                                            </div>
+                                            <div class="col-9">
+                                                <p>2510 Farland Avenue, Texas, 78861</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary mt-3">Change</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="sgt-mp-content">
+                                <h5 class=" sgt-st-title">Payment</h5>
+                                <div class="sgt-mp-details">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                Plan
+                                            </div>
+                                            <div class="col-2">
+                                                Amount
+                                            </div>
+                                            <div class="col-3">
+                                                Payment method
+                                            </div>
+                                            <div class="col-2">
+                                                Date
+                                            </div>
+                                            <div class="col-2">
+                                                Status
+                                            </div>
+                                            <div class="col-1">
+                                                View
+                                            </div>
+                                        </div>
+                                        <!-- for dynamic -->
+                                        <!-- This will show when payment is not done -->
+                                        <div class="row mt-4" style="display: none;">
+                                            <div class="col-12 text-center">
+                                                <p>You haven’t made any payment.</p>
+                                            </div>
+                                        </div>
+                                        <!-- This will show when payment is not done -->
+                                        <!-- for dynamic -->
+                                        <div class="row mt-4">
+                                            <div class="col-2">
+                                                Plus
+                                            </div>
+                                            <div class="col-2">
+                                                $9 /month
+                                            </div>
+                                            <div class="col-3">
+                                                Card
+                                            </div>
+                                            <div class="col-2">
+                                                25/04/2021
+                                            </div>
+                                            <div class="col-2">
+                                                Active
+                                            </div>
+                                            <div class="col-1">
+                                                <a class="btn btn-link p-0" data-mdb-toggle="modal" data-mdb-target="#view-payment">View</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade sgt-inner-popup" id="view-payment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content pb-2">
+                                                    <div class="modal-header border-0">
+                                                        <h5 class="modal-title" id="exampleModalLabel">View Payment Details</h5>
+                                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <span>Plan :</span>
+                                                                    <span>Plus</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <span>Amount :</span>
+                                                                    <span>$9 /month</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <span>Payment menthod :</span>
+                                                                    <span>Card</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <span>Date :</span>
+                                                                    <span>25/04/2021</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <span>Status :</span>
+                                                                    <span>Active</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <span>Renew Date :</span>
+                                                                    <span>25/05/2021</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer border-0">
+                                                        <button type="button" class="btn btn-light" data-mdb-dismiss="modal">
+                                                                Ok
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+    <!-- MDB -->
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js "></script>
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js "></script>
+    <script src="js/custom.js "></script>
+
+</body>
+
+</html>
