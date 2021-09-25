@@ -144,11 +144,11 @@ admin.on('connection', function (socket) {
 
     //Save each data Question into the field 
       socket.to(room).on('pushdataforQuestion', (data) => {
-        //console.log(data);
+        console.log(data);
           connection.getConnection(function (err, conn) {
             if (err) throw err;
         
-            connection.query(`SELECT q_id FROM slidequestion WHERE slide_id=${data.selectedlideID}`, function (err, rows) {
+            connection.query(`SELECT q_id FROM slidequestion WHERE slide_id=${data.selectedlideID} AND slidetype='${data.type}'`, function (err, rows) {
               if (err) {
                 console.log(err);
                 return
@@ -164,7 +164,7 @@ admin.on('connection', function (socket) {
                 console.log('Question Updated');
               })
               } else {
-              connection.query(`INSERT INTO slidequestion (q_detail,slide_id) values ('${data.question}',${data.selectedlideID})`, function (err, rows) {
+              connection.query(`INSERT INTO slidequestion (q_detail,slide_id,slidetype) values ('${data.question}',${data.selectedlideID},'${data.type}')`, function (err, rows) {
                   if (err) {
                     console.log(err);
                     return

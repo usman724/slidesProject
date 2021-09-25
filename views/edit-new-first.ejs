@@ -303,7 +303,7 @@
         <div class="sgt-es-mid-section">
             <h5 style="width: 100%;text-align: center; background-color: hsla(0,0%,94.1%,.6);box-shadow: 0px 1px 8px #c6c5d8;">
                 </h5>
-            <div class="sgt-edit-slide-canvas minClass" 
+            <div class="sgt-edit-slide-canvas minClass canvaadd" 
                 
             id="sgt-edit-slide-main"  >
                 
@@ -558,7 +558,7 @@
                                     <div class="sgt-input-limit row">
                                         <div class="col-10">
                                             <div class="form-group sgt-option-cell mb-0">
-                                                <input type="text" id="form-option-1" class="form-control" 
+                                                <input type="text" id="form-option-1"   name="multipelchoiceOption[]" class="form-control" 
     
                                                 maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
                                                 <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
@@ -581,7 +581,9 @@
                                     <div class="sgt-input-limit row">
                                         <div class="col-10">
                                             <div class="form-group sgt-option-cell mb-0">
-                                                <input type="text" id="form-option-2" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                                <input type="text" id="form-option-2"   name="multipelchoiceOption[]" 
+                                                onchange="OnChangeInput(this);"
+                                                class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
                                             </div>
                                         </div>
                                         <div class="col-1 p-0 d-flex align-items-center justify-content-center">
@@ -601,7 +603,9 @@
                                     <div class="sgt-input-limit row">
                                         <div class="col-10">
                                             <div class="form-group sgt-option-cell mb-0">
-                                                <input type="text" id="form-option-3" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                                <input type="text" id="form-option-3"   name="multipelchoiceOption[]"
+                                                onchange="OnChangeInput(this);"
+                                                class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
                                             </div>
                                         </div>
                                         <div class="col-1 p-0 d-flex align-items-center justify-content-center">
@@ -626,7 +630,9 @@
                                     <div class="sgt-input-limit row">
                                         <div class="col-10">
                                             <div class="form-group sgt-option-cell mb-0">
-                                                <input type="text" id="form-option" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                                <input type="text" id="form-option" class="form-control"
+                                                onchange="OnChangeInput(this);"
+                                                 maxlength="150" hint-class="show-sgt-counter" name="multipelchoiceOption[]" placeholder="Option" />
                                             </div>
                                         </div>
                                         <div class="col-1 p-0 d-flex align-items-center justify-content-center">
@@ -930,7 +936,8 @@
                                 <div class="row">
                                     <div class="col-11 pr-0">
                                         <div class="form-outline mb-1">
-                                            <input type="text" id="form5" class="form-control sgt-inpt-counter" maxlength="150" hint-class="show-sgt-counter" />
+                                            <input type="text" id="open_ended_question" class="form-control sgt-inpt-counter" 
+                                            maxlength="150" hint-class="show-sgt-counter" />
                                             <label class="form-label" for="form5">Multiple Choice</label>
                                             <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
                                         </div>
@@ -1554,6 +1561,11 @@ crossorigin="anonymous"></script>
         $('#ex2-tabs-2 .tabPanelContent').addClass('d-none');
         $('#multipleChoice').removeClass('d-none');
         $('#multipleChoice').addClass('d-block');
+
+        document.getElementsByClassName("multipleChoice")[0]
+        .style.border="2px solid #0000FF";
+
+        allowMultipelChoiceQuestion();
     });
     $('.st-click-list').on('click', '.imageChoice', function() {
         $('#ex2-tabs-2 .tabPanelContent').removeClass('d-block');
@@ -1566,6 +1578,7 @@ crossorigin="anonymous"></script>
         $('#ex2-tabs-2 .tabPanelContent').addClass('d-none');
         $('#openEnded').removeClass('d-none');
         $('#openEnded').addClass('d-block');
+        allowOpenEndedQuestion();
     });
 </script>
 </body>

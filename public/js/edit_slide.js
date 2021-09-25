@@ -8,32 +8,36 @@ const folder_id_for_share = urlParams.get('folder_id');
 const userid_for_share = urlParams.get('userid');
 
 
-// 👐  For Open Ended Question  
+// 👐 For Open Ended Question  
 var allowopenEndedQuestionCheck = false;
 
 
 function allowOpenEndedQuestion() {
-    
+
     allowopenEndedQuestionCheck = true;
     alert(allowopenEndedQuestionCheck);
-    $('.MultipleChociceContent').css('display','none');
-    $('.openEndedContent').css('display','block');
-   
+    $('.MultipleChociceContent').css('display', 'none');
+    $('.openEndedContent').css('display', 'block');
+    
+    // gt-edit-slide-main
+
+    document.getElementsByClassName("canvaadd")[0].innerHTML=``;
+
 
 }
 
 function allowMultipelChoiceQuestion() {
 
     allowopenEndedQuestionCheck = false;
-    
-    $('.MultipleChociceContent').css('display','block');
-    $('.openEndedContent').css('display','none');
 
-alert(allowopenEndedQuestionCheck);
+    $('.MultipleChociceContent').css('display', 'block');
+    $('.openEndedContent').css('display', 'none');
+
+    alert('allowopenEndedQuestionCheck');
 
 }
 
-allowMultipelChoiceQuestion();
+
 
 
 
@@ -43,7 +47,6 @@ admin.emit('joinroom', `${slide_link_share}${slide_id_from_link}${folder_id_for_
 admin.on('geteachslidedata', function (data) {
 
     // 🔯  0️⃣  Only call when user select the Multipel Choice Question
-
     if (!allowopenEndedQuestionCheck) {
         m = data.slidedata;
         document.getElementById("usertext").innerText = typeof (data.rowsofquestion) !== 'undefined' && data.rowsofquestion.length > 0 ? data.rowsofquestion[0].q_detail : '';
@@ -152,7 +155,9 @@ admin.on('geteachslidedata', function (data) {
         massPopChart.update();
     }
 
-    
+
+
+
 });
 
 admin.on('voteupdate', (data) => {
@@ -193,6 +198,8 @@ myInput.addEventListener('keyup', e => {
 
 
 
+// Allow User to Choose the Multipel Options
+
 function checkOperation() {
 
     let sendDataForLiveWithMultipelParticipent = {
@@ -211,6 +218,8 @@ function checkOperation() {
 }
 
 
+
+// Multipel Choice Question Range
 
 function checkOperationForRange() {
     document.getElementById("selectionrangevalue").innerText = document.getElementById("rangeselection").value;
@@ -248,6 +257,50 @@ myInput.addEventListener('change', e => {
 
 
 
+// function OnChangeInput(e) {
+    
+
+//     // alert(e.target.value);
+
+//     console.log('e' ,e);
+//     $('input[name="multipelchoiceOption[]"]').each(function (index, member) {
+//         var value = $(member).val();
+        
+      
+
+    
+        
+//     if (e.target.value.length > 1) {
+//         arraylabel[index] = e.target.value;
+
+//         let savemcqone = {
+//             selectedlideID: document.getElementById("selectedIdSlide").value,
+//             atindex: index,
+//             currentUserId: currentUserId,
+//             currentFolderid: currentFolderid,
+//             valuesend: e.target.value,
+//             slide_link_share: slide_link_share
+//         }
+
+
+//         admin.emit("savemcqone", savemcqone);
+//         let sendDataForLive = {
+//             id: document.getElementById("selectedIdSlide").value,
+//             slide_link_share: slide_link_share
+//         }
+
+//         admin.emit("updateLiveData", sendDataForLive);
+//     }
+
+
+//           massPopChart.update();
+
+        
+//     });
+    
+// }
+
+
 const myInput2 = document.getElementById('form-option-1');
 myInput2.addEventListener('change', e => {
 
@@ -274,8 +327,10 @@ myInput2.addEventListener('change', e => {
         admin.emit("updateLiveData", sendDataForLive);
     }
 
-
+    // OnChangeInput();
     massPopChart.update();
+
+  
 
 });
 
@@ -337,6 +392,52 @@ myInput4.addEventListener('change', e => {
     massPopChart.update();
 
 });
+
+
+// 🌝🌝
+// 🌡️
+// For Open Ended Save and get data  
+
+
+// tb_id int(11) 
+// share varchar(255) 
+// user_id varchar(255) 
+// folder_id varchar(255) 
+// slide_id varchar(255) 
+// optionname varchar(255) 
+// optiondetail varchar(500)
+
+const open_ended_question = document.getElementById('open_ended_question');
+open_ended_question.addEventListener('change', e => {
+
+
+    if (e.target.value.length > 1) {
+        let saveQuestion = {
+            selectedlideID: document.getElementById("selectedIdSlide").value,
+            question: document.getElementById("open_ended_question").value,
+            type:"openended"
+        }
+        admin.emit("pushdataforQuestion", saveQuestion);
+
+        let sendDataForLive = {
+            id: slide_id_from_link,
+            slide_link_share: slide_link_share
+        }
+        admin.emit("updateLiveData", sendDataForLive);
+
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
 
 const candidates = [];
 const btnsave = document.getElementById('saveandshare');
@@ -694,7 +795,6 @@ function updatefun(barcharttype) {
     massPopChart.update();
 }
 
-                       // form-option-1
 
 
 

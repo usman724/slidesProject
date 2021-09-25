@@ -25,6 +25,7 @@ $(document).ready(function() {
     //var $menu = $('#menu');
     $(document).on('click', '.sgt-option_add-row-btn', function(e) {
         var $el = $(e.currentTarget);
+        // console.log('target',e.length);
         var htmlString = $('#rowTemplate').html();
         $tableBody.append(htmlString);
         return false;

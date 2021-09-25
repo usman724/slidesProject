@@ -42,10 +42,6 @@ a {
     width: 0;
 }
 
-.mb-100 {
-    margin-bottom: 100px;
-}
-
 #mySidenav[class*="col-"] .sgt-slide-tool-options {
     opacity: 1;
 }
@@ -68,8 +64,7 @@ a {
     height: 66px;
 }
 
-.log-sign-header div,
-.sgt-inner-header div {
+.log-sign-header div {
     height: 100%;
 }
 
@@ -1021,12 +1016,6 @@ a.sgt-show-all-results {
     border-radius: 5px;
 }
 
-.sgt-folder-icon img {
-    border-radius: 50%;
-    background-color: antiquewhite;
-    padding: 1rem;
-}
-
 .sgt-slide-lists .navbar-expand-sm .navbar-nav .dropdown-menu {
     width: 13rem;
 }
@@ -1514,6 +1503,62 @@ a.sgt-show-all-results {
 
 /* Verified Page*/
 
+
+/*============ Audience ============*/
+
+
+/* Mobile */
+
+@media screen and (max-width:767px) {
+    .noPresentations-buttons {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .logreg-forms {
+        width: 300px;
+    }
+    .logreg-forms .social-login {
+        width: 200px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .login-page .logreg-forms .social-login {
+        width: auto;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .logreg-forms .social-btn {
+        font-size: 1.3rem;
+        font-weight: 100;
+        color: white;
+        width: 100%;
+        height: 56px;
+    }
+    .logreg-forms .google-btn {
+        background-color: #fff;
+        border: 2px solid #ccc;
+        color: #777;
+    }
+    .logreg-forms .social-btn:nth-child(1) {
+        margin-bottom: 5px;
+    }
+    .logreg-forms .social-btn span {
+        display: none;
+    }
+    .logreg-forms .facebook-btn:after {
+        content: 'Facebook';
+    }
+    .logreg-forms .google-btn:after {
+        content: 'Google';
+    }
+    .logreg-forms .form-reset {
+        width: 300px;
+    }
+}
 
 /* Thank you for participation */
 
@@ -2401,64 +2446,4 @@ a.sgt-show-all-results {
 }
 .owl-carousel.one-by-one .owl-nav button{
     font-size: 30px;
-}
-
-
-/* Open Ended */
-
-
-/*============ Audience ============*/
-
-
-/* Mobile */
-
-@media screen and (max-width:767px) {
-    .noPresentations-buttons {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width:500px) {
-    .logreg-forms {
-        width: 300px;
-    }
-    .logreg-forms .social-login {
-        width: 200px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
-    .login-page .logreg-forms .social-login {
-        width: auto;
-        margin: 0 auto;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    .logreg-forms .social-btn {
-        font-size: 1.3rem;
-        font-weight: 100;
-        color: white;
-        width: 100%;
-        height: 56px;
-    }
-    .logreg-forms .google-btn {
-        background-color: #fff;
-        border: 2px solid #ccc;
-        color: #777;
-    }
-    .logreg-forms .social-btn:nth-child(1) {
-        margin-bottom: 5px;
-    }
-    .logreg-forms .social-btn span {
-        display: none;
-    }
-    .logreg-forms .facebook-btn:after {
-        content: 'Facebook';
-    }
-    .logreg-forms .google-btn:after {
-        content: 'Google';
-    }
-    .logreg-forms .form-reset {
-        width: 300px;
-    }
 }
