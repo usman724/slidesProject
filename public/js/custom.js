@@ -24,7 +24,6 @@ $(document).ready(function() {
     var $tableBody = $('#sgtOptionBody');
     //var $menu = $('#menu');
     $(document).on('click', '.sgt-option_add-row-btn', function(e) {
-        alert('new add');
         var $el = $(e.currentTarget);
         var htmlString = $('#rowTemplate').html();
         $tableBody.append(htmlString);
@@ -99,3 +98,11 @@ $(".sgt-ce-edit-itext").click(function() {
     $(".sgt-ce-edit-itext i").toggleClass("fa-pencil-alt fa-times");
     //$("#add-lg-desc").css('display', 'none');
 });
+$('.one-by-one').owlCarousel({
+    margin:10,
+    mouseDrag: false,
+    touchDrag: false,
+    items: 1,
+    nav: true,
+    dots: false
+})
