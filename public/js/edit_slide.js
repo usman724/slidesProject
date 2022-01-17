@@ -430,9 +430,64 @@ open_ended_question.addEventListener('change', e => {
 });
 
 
+// Now we are moving to the option 
 
 
 
+
+
+
+const open_ended_one = document.getElementById('form-option-open-ended-one-customselect');
+open_ended_one.addEventListener('change', e => {
+
+
+    if (e.target.value.length > 1) {
+        let saveQuestion = {
+            selectedlideID: document.getElementById("selectedIdSlide").value,
+            question: document.getElementById("form-option-open-ended-one-customselect").value,
+            type:"openended"
+        }
+        admin.emit("pushdataforQuestion", saveQuestion);
+
+        let sendDataForLive = {
+            id: slide_id_from_link,
+            slide_link_share: slide_link_share
+        }
+        admin.emit("updateLiveData", sendDataForLive);
+
+    }
+
+});
+
+
+const myInput4 = document.getElementById('form-option-3');
+myInput4.addEventListener('change', e => {
+
+
+    if (e.target.value.length > 1) {
+        arraylabel[2] = e.target.value;
+
+        let savemcqone = {
+            selectedlideID: document.getElementById("selectedIdSlide").value,
+            atindex: 2,
+            currentUserId: currentUserId,
+            currentFolderid: currentFolderid,
+            valuesend: e.target.value,
+            slide_link_share: slide_link_share
+        }
+
+
+        admin.emit("savemcqone", savemcqone);
+        let sendDataForLive = {
+            id: document.getElementById("selectedIdSlide").value,
+            slide_link_share: slide_link_share
+        }
+
+        admin.emit("updateLiveData", sendDataForLive);
+    }
+    massPopChart.update();
+
+});
 
 
 

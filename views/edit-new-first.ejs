@@ -526,9 +526,7 @@
                 </div>
                 <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
                     <div id="multipleChoice" class="d-block tabPanelContent">
-                        <div class="sgt-add-desc">
-                            <a href="">Add meta description</a>
-                        </div>
+                       
                         <div class="sgt-st-row mt-3">
                             <h5 class="sgt-st-title">Your question</h5>
                             <div class="sgt-input-limit mt-3">
@@ -750,16 +748,17 @@
                     </div>
 
                     <div id="imageChoice" class="d-none tabPanelContent">
-                        <div class="sgt-add-desc">
-                            <a href="">Add meta description</a>
-                        </div>
+                       
                         <div class="sgt-st-row mt-3">
                             <h5 class="sgt-st-title">Your question</h5>
                             <div class="sgt-input-limit mt-3">
                                 <div class="row">
                                     <div class="col-11 pr-0">
                                         <div class="form-outline mb-1">
-                                            <input type="text" id="form5" class="form-control sgt-inpt-counter" maxlength="150" hint-class="show-sgt-counter" />
+                                            <input type="text" id="form5"
+                                            
+                                            
+                                            class="form-control sgt-inpt-counter" maxlength="150" hint-class="show-sgt-counter" />
                                             <label class="form-label" for="form5">Multiple Choice</label>
                                             <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
                                         </div>
@@ -927,9 +926,12 @@
                         </div>
                     </div>
                     <div id="openEnded" class="d-none tabPanelContent">
-                        <div class="sgt-add-desc">
-                            <a href="">Add meta description</a>
-                        </div>
+                        <!-- <div class="sgt-add-desc">
+                            <a href="">Add met222a description</a>
+                        </div> -->
+
+
+                        <!-- Open ended Question  -->
                         <div class="sgt-st-row mt-3">
                             <h5 class="sgt-st-title">Your question</h5>
                             <div class="sgt-input-limit mt-3">
@@ -968,16 +970,18 @@
                                         <div class="col-10">
                                             <div class="row">
                                                 <div class="col-5 pr-1">
-                                                    <select class="browser-default custom-select">
-                                                        <option selected>Name</option>
-                                                        <option value="1">Organisation</option>
-                                                        <option value="2">Email</option>
-                                                        <option value="3">Avatar</option>
+                                                    <select  id="form-option-open-ended-one-customselect"  class="browser-default custom-select">
+                                                        <option value="Name" selected>Name</option>
+                                                        <option value="Organisation">Organisation</option>
+                                                        <option value="Email">Email</option>
+                                                        <option value="Avatar">Avatar</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-7 pl-0">
                                                     <div class="form-group sgt-option-cell mb-0">
-                                                        <input type="text" id="form-option" class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
+                                                        <input type="text" id="form-option-open-ended-one" 
+                                                        
+                                                        class="form-control" maxlength="150" hint-class="show-sgt-counter" placeholder="Option" />
                                                         <span class="remaining sgt-st-input-counter show-sgt-counter">150</span>
                                                     </div>
                                                 </div>
